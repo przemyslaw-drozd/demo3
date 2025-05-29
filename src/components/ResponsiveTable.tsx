@@ -50,7 +50,7 @@ const ModalContent = styled.div`
 
 interface FormValues {
   name: string;
-  age: string;
+  age: number;
   email: string;
 }
 
