@@ -76,7 +76,7 @@ const useForm = (initialValues: FormValues) => {
     setValues({ ...values, [name]: value });
   };
 
-  return { values, handleChange };
+  return { values, handleChange, setValues };
 };
 
 const Row = ({ row }: { row: { id: number; name: string; age: number; email: string } }) => (
@@ -98,13 +98,14 @@ const ResponsiveTable = () => {
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { values, handleChange } = useForm({ name: '', age: '', email: '' });
+  const { values, handleChange, setValues } = useForm({ name: '', age: '', email: '' });
 
   const handleAddData = () => {
     setData([
       ...data,
       { id: data.length + 1, name: values.name, age: parseInt(values.age, 10), email: values.email },
     ]);
+    setValues({ name: '', age: '', email: '' }); // Clear form after submit
     setIsModalOpen(false);
   };
 
